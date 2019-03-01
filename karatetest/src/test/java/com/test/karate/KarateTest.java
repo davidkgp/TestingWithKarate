@@ -13,7 +13,13 @@ public class KarateTest {
     @BeforeClass
     public static void startApp(){
 
-        SpringApplication.run(MyApp.class, "--spring.application.name='ProviderApp'", "--server.port=8097");
+        SpringApplication.run(MyApp.class,
+                "--security.require-ssl=true",
+                "--server.ssl.key-store-type=JKS",
+                "--server.ssl.key-store=classpath:jks/mykey.jks",
+                "--server.ssl.key-store-password=test123",
+                "--spring.application.name='ProviderApp'",
+                "--server.port=8097");
 
     }
 }
